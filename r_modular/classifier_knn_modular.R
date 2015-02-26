@@ -1,4 +1,4 @@
-#!/home/betke/install/R/bin/Rscript
+#!/usr/bin/Rscript
 # This example shows usage of a k-nearest neighbor (KNN) classification rule on
 # a toy data set. The number of the nearest neighbors is set to k=3 and the distances
 # are measured by the Euclidean metric. Finally, the KNN rule is applied to predict
