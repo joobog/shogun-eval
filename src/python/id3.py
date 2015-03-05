@@ -47,17 +47,56 @@ for i in xrange(len(train_income)):
 # form Shogun feature matrix
 train_data = array([train_income, train_age, train_education, train_marital])
 print train_data
-#RealFeatures(train_data);
-#train_feats = RealFeatures(train_data);
+RealFeatures(train_data);
+train_feats = RealFeatures(train_data);
 
 # form Shogun multiclass labels
 MulticlassLabels(array(train_usage));
-#labels = MulticlassLabels(array(train_usage));
+labels = MulticlassLabels(array(train_usage));
 
 
 
 
 
+
+
+# create ID3ClassifierTree object
+id3 = ID3ClassifierTree()
+
+# set labels
+id3.set_labels(labels)
+
+# learn the tree from training features
+is_successful = id3.train(train_feats)
+
+# test data
+test_income = ['Medium','Medium','Low','High','High']
+test_age = ['Old','Young','Old','Young','Old']
+test_education = ['University','College','High School','University','College']
+test_marital = ['Married','Single','Married','Single','Married']
+test_usage = ['Low','Medium','Low','High','High']
+
+# tabulate test data
+print 'Test Data Table : \n'
+print 'Income \t\t Age \t\t Education \t\t Marital Status \t Usage'
+for i in xrange(len(test_income)):
+        print test_income[i]+' \t\t '+test_age[i]+' \t\t '+test_education[i]+' \t\t '+test_marital[i]+' \t\t ?'
+
+
+
+# encode test data
+#for i in xrange(len(test_income)):
+    #test_income[i] = income[test_income[i]]
+    #test_age[i] = age[test_age[i]]
+    #test_education[i] = education[test_education[i]]
+    #test_marital[i] = marital_status[test_marital[i]]
+
+    ## bind to shogun features    
+    #test_data = array([test_income, test_age, test_education, test_marital])
+    #test_feats = RealFeatures(test_data)
+
+    ## apply decision tree classification
+    #test_labels = id3.apply_multiclass(test_feats)
 
 
 
